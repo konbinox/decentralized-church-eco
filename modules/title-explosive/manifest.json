@@ -1,0 +1,11 @@
+{
+  "name": "title-explosive",
+  "version": "1.0.0",
+  "inputs": [
+    {"key": "text", "type": "string", "label": "标题"},
+    {"key": "subtitle", "type": "string", "label": "副标题", "optional": true}
+  ],
+  "style": "title-explosive.css",
+  "template": "title-explosive.html",
+  "script": "title-explosive.js"
+}
