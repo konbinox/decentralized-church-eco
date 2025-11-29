@@ -1,97 +1,82 @@
-async function loadManifest() {
-  const res = await fetch("modules/title-explosive/manifest.json");
-  const manifest = await res.json();
-  
-  // 渲染选择框
-  const selector = document.getElementById("elementSelector");
-  selector.innerHTML = `<label><input type="checkbox" id="titleExplosiveCheck"> ${manifest.name}</label>`;
-  
-  // 渲染表单
-  const form = document.getElementById("elementForm");
-  form.innerHTML = manifest.inputs.map(input =>
-    `<label>${input.label}: <input id="${input.key}" type="text"></label>`
+// 加载页面清单和预设映射
+async function loadPagesAndPresets() {
+  const [pagesRes, presetsRes] = await Promise.all([
+    fetch("data/pages.json"),
+    fetch("data/presets.json")
+  ]);
+  const pages = await pagesRes.json();
+  const presets = await presetsRes.json();
+
+  const selector = document.getElementById("pageSelector");
+  selector.innerHTML = pages.map(p =>
+    `<label><input type="checkbox" value="${p.id}"> ${p.name}</label>`
   ).join("<br>");
-  
-  // 绑定预览
-  document.getElementById("titleExplosiveCheck").addEventListener("change", () => preview(manifest));
-  document.getElementById("exportBtn").addEventListener("click", () => exportPage(manifest));
-}
 
-function preview(manifest) {
-  const data = {};
-  manifest.inputs.forEach(input => {
-    data[input.key] = document.getElementById(input.key).value;
+  // 点击导出按钮时，生成页面
+  document.getElementById("exportBtn").addEventListener("click", () => {
+    const selectedIds = Array.from(selector.querySelectorAll("input:checked")).map(i => i.value);
+    generatePage(selectedIds, presets);
   });
-  
-  fetch(`modules/${manifest.name}/${manifest.template}`)
-    .then(res => res.text())
-    .then(html => {
-      const rendered = html.replace("{{text}}", data.text || "")
-                           .replace("{{subtitle}}", data.subtitle || "");
-      const previewFrame = document.getElementById("preview").contentDocument;
-      previewFrame.open();
-      previewFrame.write(`
-        <html>
-        <head>
-          <link rel="stylesheet" href="modules/${manifest.name}/${manifest.style}">
-        </head>
-        <body>${rendered}</body>
-        </html>
-      `);
-      previewFrame.close();
-    });
 }
 
-function exportPage(manifest) {
-  const data = {};
-  manifest.inputs.forEach(input => {
-    data[input.key] = document.getElementById(input.key).value;
-  });
+// 根据选中的页面 ID 生成完整页面
+async function generatePage(pageIds, presets) {
+  const allHtml = [];
+  const allStyles = new Set();
 
-  fetch(`modules/${manifest.name}/${manifest.template}`)
-    .then(res => res.text())
-    .then(html => {
-      const rendered = html.replace("{{text}}", data.text || "")
-                           .replace("{{subtitle}}", data.subtitle || "");
-      
-      const fullPage = `
-        <!DOCTYPE html>
-        <html lang="zh">
-        <head>
-          <meta charset="UTF-8">
-          <title>生成的聚会页面</title>
-          <link rel="stylesheet" href="modules/${manifest.name}/${manifest.style}">
-        </head>
-        <body>
-          ${rendered}
-        </body>
-        </html>
-      `;
-      
-      const blob = new Blob([fullPage], { type: "text/html" });
-      const url = URL.createObjectURL(blob);
-      
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "generated-page.html";
-      a.click();
-      URL.revokeObjectURL(url);
-    });
+  for (const pageId of pageIds) {
+    const elementIds = presets[pageId] || [];
+    for (const elementId of elementIds) {
+      const manifestRes = await fetch(`modules/${elementId}/manifest.json`);
+      const manifest = await manifestRes.json();
+
+      const templateRes = await fetch(`modules/${elementId}/${manifest.template}`);
+      const templateHtml = await templateRes.text();
+
+      // 简单输入：用 prompt 收集数据
+      const data = {};
+      manifest.inputs.forEach(input => {
+        const val = prompt(`请输入 ${elementId} 的 ${input.label}`);
+        data[input.key] = val || "";
+      });
+
+      // 替换模板中的占位符
+      let rendered = templateHtml;
+      manifest.inputs.forEach(input => {
+        const key = input.key;
+        const val = data[key];
+        rendered = rendered.replaceAll(`{{${key}}}`, val);
+      });
+
+      allHtml.push(rendered);
+      allStyles.add(`<link rel="stylesheet" href="modules/${elementId}/${manifest.style}">`);
+    }
+  }
+
+  // 合成完整页面
+  const fullPage = `
+    <!DOCTYPE html>
+    <html lang="zh">
+    <head>
+      <meta charset="UTF-8">
+      <title>生成的聚会页面</title>
+      ${Array.from(allStyles).join("\n")}
+    </head>
+    <body>
+      ${allHtml.join("\n")}
+    </body>
+    </html>
+  `;
+
+  // 导出为 HTML 文件
+  const blob = new Blob([fullPage], { type: "text/html" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "generated-page.html";
+  a.click();
+  URL.revokeObjectURL(url);
 }
 
-loadManifest();
-
-fetch("data/pages.json")
-  .then(res => res.json())
-  .then(pages => {
-    const container = document.getElementById("pageSelector");
-    container.innerHTML = pages.map(page =>
-      `<label><input type="checkbox" value="${page.id}"> ${page.name}</label>`
-    ).join("<br>");
-  });
-
-async function getPresetElements(pageId) {
-  const res = await fetch("data/presets.json");
-  const presets = await res.json();
-  return presets[pageId] || [];
-}
+// 初始化
+loadPagesAndPresets();
