@@ -89,3 +89,9 @@ fetch("data/pages.json")
       `<label><input type="checkbox" value="${page.id}"> ${page.name}</label>`
     ).join("<br>");
   });
+
+async function getPresetElements(pageId) {
+  const res = await fetch("data/presets.json");
+  const presets = await res.json();
+  return presets[pageId] || [];
+}
