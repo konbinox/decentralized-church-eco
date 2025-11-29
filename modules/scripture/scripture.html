@@ -1,0 +1,6 @@
+<template id="scripture">
+  <div class="scripture-block">
+    <p class="scripture-text">“{{text}}”</p>
+    <p class="scripture-ref">— {{reference}}</p>
+  </div>
+</template>
