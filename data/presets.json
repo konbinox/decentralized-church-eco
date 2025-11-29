@@ -1,0 +1,27 @@
+{
+  "01": ["title-explosive", "background-image", "scripture"],
+  "02": ["title-welcome", "background-image", "scripture"],
+  "03": ["title-king-arrival", "background-image", "music-player"],
+  "04": ["title-month-change", "scripture", "custom-slide"],
+  "05": ["title-improvement", "scripture"],
+  "06": ["title-border", "background-image"],
+  "07": ["title-guatemala", "scripture", "custom-slide"],
+  "08": ["title-review", "scripture", "group-stats"],
+  "09": ["title-interrogation", "scripture"],
+  "10": ["title-interrogation-text", "custom-slide"],
+  "11": ["title-report", "group-stats"],
+  "12": ["title-academy", "scripture", "custom-slide"],
+  "13": ["title-deep", "background-image", "scripture"],
+
+  "14": ["qr-code"],
+  "15": ["intercession-items"],
+  "16": ["host-script"],
+  "17": ["farewell"],
+  "18": ["communion"],
+  "19": ["birthday"],
+  "20": ["grouping-panel"],
+  "21": ["custom-slide"],
+  "22": ["music-player"],
+  "23": ["teaching-slide"],
+  "24": []
+}
