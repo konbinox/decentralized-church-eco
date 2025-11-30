@@ -1,4 +1,3 @@
-// 加载页面清单和预设映射
 async function loadPagesAndPresets() {
   const [pagesRes, presetsRes] = await Promise.all([
     fetch("data/pages.json"),
@@ -12,14 +11,12 @@ async function loadPagesAndPresets() {
     `<label><input type="checkbox" value="${p.id}"> ${p.name}</label>`
   ).join("<br>");
 
-  // 点击导出按钮时，生成页面
   document.getElementById("exportBtn").addEventListener("click", () => {
     const selectedIds = Array.from(selector.querySelectorAll("input:checked")).map(i => i.value);
     generatePage(selectedIds, presets);
   });
 }
 
-// 根据选中的页面 ID 生成完整页面
 async function generatePage(pageIds, presets) {
   const allHtml = [];
   const allStyles = new Set();
@@ -33,14 +30,12 @@ async function generatePage(pageIds, presets) {
       const templateRes = await fetch(`modules/${elementId}/${manifest.template}`);
       const templateHtml = await templateRes.text();
 
-      // 简单输入：用 prompt 收集数据
       const data = {};
       manifest.inputs.forEach(input => {
         const val = prompt(`请输入 ${elementId} 的 ${input.label}`);
         data[input.key] = val || "";
       });
 
-      // 替换模板中的占位符
       let rendered = templateHtml;
       manifest.inputs.forEach(input => {
         const key = input.key;
@@ -53,7 +48,6 @@ async function generatePage(pageIds, presets) {
     }
   }
 
-  // 合成完整页面
   const fullPage = `
     <!DOCTYPE html>
     <html lang="zh">
@@ -68,15 +62,15 @@ async function generatePage(pageIds, presets) {
     </html>
   `;
 
-  // 导出为 HTML 文件
   const blob = new Blob([fullPage], { type: "text/html" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
   a.download = "generated-page.html";
+  document.body.appendChild(a);
   a.click();
+  document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
 
-// 初始化
 loadPagesAndPresets();
