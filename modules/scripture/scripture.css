@@ -1,6 +1,27 @@
+<<<<<<< HEAD
 .scripture {
   margin: 1rem;
   padding: 1rem;
   border: 1px solid #ccc;
   text-align: center;
 }
+=======
+.scripture-block {
+  text-align: center;
+  margin: 2rem auto;
+  padding: 1rem;
+  font-family: "Georgia", serif;
+  color: #333;
+}
+
+.scripture-text {
+  font-size: 1.8rem;
+  font-style: italic;
+}
+
+.scripture-ref {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  color: #666;
+}
+>>>>>>> 4a68468905ce0622c2dfd4d057aa1a140c1b4ef2

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "template": "title-explosive.html",
   "style": "title-explosive.css",
   "inputs": [
@@ -8,3 +9,14 @@
     }
   ]
 }
+=======
+  "name": "title-explosive",
+  "version": "1.0.0",
+  "inputs": [
+    { "key": "text", "type": "string", "label": "主标题" }
+  ],
+  "style": "title-explosive.css",
+  "template": "title-explosive.html",
+  "script": "title-explosive.js"
+}
+>>>>>>> 4a68468905ce0622c2dfd4d057aa1a140c1b4ef2

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "template": "scripture.html",
   "style": "scripture.css",
   "inputs": [
@@ -8,3 +9,15 @@
     }
   ]
 }
+=======
+  "name": "scripture",
+  "version": "1.0.0",
+  "inputs": [
+    { "key": "reference", "type": "string", "label": "经文出处" },
+    { "key": "text", "type": "string", "label": "经文内容" }
+  ],
+  "style": "scripture.css",
+  "template": "scripture.html",
+  "script": "scripture.js"
+}
+>>>>>>> 4a68468905ce0622c2dfd4d057aa1a140c1b4ef2

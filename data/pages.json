@@ -12,7 +12,7 @@
   { "id": "11", "name": "审讯报告", "type": "core" },
   { "id": "12", "name": "审讯学院", "type": "core" },
   { "id": "13", "name": "深处试图", "type": "core" },
-
+ 
   { "id": "14", "name": "二维码展示页", "type": "flex" },
   { "id": "15", "name": "代读事项", "type": "flex" },
   { "id": "16", "name": "主持文", "type": "flex" },
@@ -25,3 +25,4 @@
   { "id": "23", "name": "教学短讲页", "type": "flex" },
   { "id": "24", "name": "空白页", "type": "flex" }
 ]
+
