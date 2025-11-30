@@ -1,0 +1,14 @@
+{
+  "template": "music-player.html",
+  "style": "music-player.css",
+  "inputs": [
+    {
+      "key": "title",
+      "label": "音乐标题"
+    },
+    {
+      "key": "url",
+      "label": "音乐链接"
+    }
+  ]
+}

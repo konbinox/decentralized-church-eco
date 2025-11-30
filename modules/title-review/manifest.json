@@ -1,0 +1,10 @@
+{
+  "template": "title-review.html",
+  "style": "title-review.css",
+  "inputs": [
+    {
+      "key": "title",
+      "label": "标题"
+    }
+  ]
+}

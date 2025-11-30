@@ -1,0 +1,10 @@
+{
+  "template": "communion.html",
+  "style": "communion.css",
+  "inputs": [
+    {
+      "key": "text",
+      "label": "文本字段"
+    }
+  ]
+}

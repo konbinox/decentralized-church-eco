@@ -1,0 +1,10 @@
+{
+  "template": "teaching-slide.html",
+  "style": "teaching-slide.css",
+  "inputs": [
+    {
+      "key": "text",
+      "label": "文本字段"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "template": "grouping-panel.html",
+  "style": "grouping-panel.css",
+  "inputs": [
+    {
+      "key": "text",
+      "label": "文本字段"
+    }
+  ]
+}

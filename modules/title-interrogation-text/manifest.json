@@ -1,0 +1,10 @@
+{
+  "template": "title-interrogation-text.html",
+  "style": "title-interrogation-text.css",
+  "inputs": [
+    {
+      "key": "title",
+      "label": "标题"
+    }
+  ]
+}

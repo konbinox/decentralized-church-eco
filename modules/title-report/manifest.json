@@ -1,0 +1,10 @@
+{
+  "template": "title-report.html",
+  "style": "title-report.css",
+  "inputs": [
+    {
+      "key": "title",
+      "label": "标题"
+    }
+  ]
+}

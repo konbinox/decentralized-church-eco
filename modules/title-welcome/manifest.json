@@ -1,0 +1,10 @@
+{
+  "template": "title-welcome.html",
+  "style": "title-welcome.css",
+  "inputs": [
+    {
+      "key": "title",
+      "label": "标题"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "template": "title-deep.html",
+  "style": "title-deep.css",
+  "inputs": [
+    {
+      "key": "title",
+      "label": "标题"
+    }
+  ]
+}

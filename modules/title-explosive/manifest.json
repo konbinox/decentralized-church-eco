@@ -1,0 +1,10 @@
+{
+  "template": "title-explosive.html",
+  "style": "title-explosive.css",
+  "inputs": [
+    {
+      "key": "title",
+      "label": "标题"
+    }
+  ]
+}

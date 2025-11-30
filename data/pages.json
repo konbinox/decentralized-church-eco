@@ -1,0 +1,27 @@
+[
+  { "id": "01", "name": "开始", "type": "core" },
+  { "id": "02", "name": "欢迎新朋友", "type": "core" },
+  { "id": "03", "name": "国王到达", "type": "core" },
+  { "id": "04", "name": "改月试图", "type": "core" },
+  { "id": "05", "name": "试图改进", "type": "core" },
+  { "id": "06", "name": "到达边境", "type": "core" },
+  { "id": "07", "name": "来自瓜地", "type": "core" },
+  { "id": "08", "name": "三日回顾", "type": "core" },
+  { "id": "09", "name": "审讯试图", "type": "core" },
+  { "id": "10", "name": "审讯之文", "type": "core" },
+  { "id": "11", "name": "审讯报告", "type": "core" },
+  { "id": "12", "name": "审讯学院", "type": "core" },
+  { "id": "13", "name": "深处试图", "type": "core" },
+
+  { "id": "14", "name": "二维码展示页", "type": "flex" },
+  { "id": "15", "name": "代读事项", "type": "flex" },
+  { "id": "16", "name": "主持文", "type": "flex" },
+  { "id": "17", "name": "下周见", "type": "flex" },
+  { "id": "18", "name": "圣餐页面", "type": "flex" },
+  { "id": "19", "name": "生日庆生页面", "type": "flex" },
+  { "id": "20", "name": "Zoom 分组记录页", "type": "flex" },
+  { "id": "21", "name": "自定义幻灯片", "type": "flex" },
+  { "id": "22", "name": "音乐播放页", "type": "flex" },
+  { "id": "23", "name": "教学短讲页", "type": "flex" },
+  { "id": "24", "name": "空白页", "type": "flex" }
+]

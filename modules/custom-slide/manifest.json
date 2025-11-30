@@ -1,0 +1,10 @@
+{
+  "template": "custom-slide.html",
+  "style": "custom-slide.css",
+  "inputs": [
+    {
+      "key": "text",
+      "label": "文本字段"
+    }
+  ]
+}

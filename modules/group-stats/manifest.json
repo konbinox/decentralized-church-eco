@@ -1,0 +1,10 @@
+{
+  "template": "group-stats.html",
+  "style": "group-stats.css",
+  "inputs": [
+    {
+      "key": "text",
+      "label": "文本字段"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "template": "intercession-items.html",
+  "style": "intercession-items.css",
+  "inputs": [
+    {
+      "key": "text",
+      "label": "文本字段"
+    }
+  ]
+}

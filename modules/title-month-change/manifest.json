@@ -1,0 +1,10 @@
+{
+  "template": "title-month-change.html",
+  "style": "title-month-change.css",
+  "inputs": [
+    {
+      "key": "title",
+      "label": "标题"
+    }
+  ]
+}

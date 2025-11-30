@@ -1,0 +1,10 @@
+{
+  "template": "title-king-arrival.html",
+  "style": "title-king-arrival.css",
+  "inputs": [
+    {
+      "key": "title",
+      "label": "标题"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "template": "scripture.html",
+  "style": "scripture.css",
+  "inputs": [
+    {
+      "key": "script",
+      "label": "脚本/台词"
+    }
+  ]
+}

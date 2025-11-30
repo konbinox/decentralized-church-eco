@@ -1,0 +1,10 @@
+{
+  "template": "farewell.html",
+  "style": "farewell.css",
+  "inputs": [
+    {
+      "key": "text",
+      "label": "文本字段"
+    }
+  ]
+}

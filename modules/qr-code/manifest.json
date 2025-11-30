@@ -1,0 +1,10 @@
+{
+  "template": "qr-code.html",
+  "style": "qr-code.css",
+  "inputs": [
+    {
+      "key": "text",
+      "label": "文本字段"
+    }
+  ]
+}

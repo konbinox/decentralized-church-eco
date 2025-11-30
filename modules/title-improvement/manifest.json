@@ -1,0 +1,10 @@
+{
+  "template": "title-improvement.html",
+  "style": "title-improvement.css",
+  "inputs": [
+    {
+      "key": "title",
+      "label": "标题"
+    }
+  ]
+}

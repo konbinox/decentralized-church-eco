@@ -1,0 +1,10 @@
+{
+  "template": "title-academy.html",
+  "style": "title-academy.css",
+  "inputs": [
+    {
+      "key": "title",
+      "label": "标题"
+    }
+  ]
+}

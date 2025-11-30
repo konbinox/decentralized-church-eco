@@ -1,0 +1,10 @@
+{
+  "template": "background-image.html",
+  "style": "background-image.css",
+  "inputs": [
+    {
+      "key": "url",
+      "label": "图片链接"
+    }
+  ]
+}

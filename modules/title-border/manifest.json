@@ -1,0 +1,10 @@
+{
+  "template": "title-border.html",
+  "style": "title-border.css",
+  "inputs": [
+    {
+      "key": "title",
+      "label": "标题"
+    }
+  ]
+}

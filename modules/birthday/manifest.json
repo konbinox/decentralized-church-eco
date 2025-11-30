@@ -1,0 +1,10 @@
+{
+  "template": "birthday.html",
+  "style": "birthday.css",
+  "inputs": [
+    {
+      "key": "text",
+      "label": "文本字段"
+    }
+  ]
+}

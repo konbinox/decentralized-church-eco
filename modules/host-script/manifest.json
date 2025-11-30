@@ -1,0 +1,10 @@
+{
+  "template": "host-script.html",
+  "style": "host-script.css",
+  "inputs": [
+    {
+      "key": "script",
+      "label": "脚本/台词"
+    }
+  ]
+}
