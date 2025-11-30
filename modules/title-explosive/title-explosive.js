@@ -1,6 +1,4 @@
-export function renderTitleExplosive(data) {
+export function renderExplosive(data) {
   const template = document.getElementById("title-explosive").innerHTML;
-  return template
-    .replace("{{text}}", data.text || "")
-    .replace("{{subtitle}}", data.subtitle || "");
+  return template.replace("{{text}}", data.text || "");
 }
