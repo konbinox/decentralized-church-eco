@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <title>页面生成器</title>
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Arial; padding: 16px; }
-    #controls { margin-bottom: 12px; }
-    #log { margin-top: 12px; color: #b00; white-space: pre-wrap; }
+    body { font-family: sans-serif; padding: 20px; }
     #pageSelector label { display: block; margin: 6px 0; }
+    #formArea label { display: block; margin: 4px 0; }
+    iframe { width: 100%; height: 400px; border: 1px solid #ccc; margin-top: 20px; }
   </style>
 </head>
 <body>
@@ -15,18 +15,16 @@
 
   <div id="pageSelector"></div>
 
-  <div id="controls">
-    <button id="previewBtn">预览页面</button>
-    <button id="exportBtn">导出页面</button>
-  </div>
+  <h2>页面字段</h2>
+  <div id="formArea"></div>
+
+  <button id="previewBtn">预览页面</button>
+  <button id="exportBtn">导出页面</button>
 
   <h2>页面预览</h2>
-  <iframe id="preview" style="width:100%; height:420px; border:1px solid #ccc;"></iframe>
+  <iframe id="preview"></iframe>
 
-  <div id="log"></div>
-
-  <script src="js/admin.js"></script>
-
-
+  <!-- ✅ 路径明确，唯一入口 -->
+  <script src="modules/js/admin.js"></script>
 </body>
 </html>
