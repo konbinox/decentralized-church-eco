@@ -46,6 +46,12 @@ async function generatePage(pageIds, presets) {
       allHtml.push(rendered);
       allStyles.add(`<link rel="stylesheet" href="modules/${elementId}/${manifest.style}">`);
     }
+  // ✅ 渲染预览区
+const previewFrame = document.getElementById("preview").contentDocument;
+previewFrame.open();
+previewFrame.write(fullPage);
+previewFrame.close();
+
   }
 
   const fullPage = `
