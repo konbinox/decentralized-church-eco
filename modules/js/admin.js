@@ -68,49 +68,66 @@ function collectData(elementId, manifest) {
   return data;
 }
 
-async function buildPage(presets) {
-  const selector = document.getElementById("pageSelector");
-  const selectedIds = getSelectedPageIds(selector);
-  if (selectedIds.length === 0) {
-    alert("请至少选择一个页面");
-    return "";
-  }
+async function buildFullPage(pageIds, presets) {
+  const allHtml = [];
+  const allStyles = new Set();
 
-  const styles = new Set();
-  const parts = [];
-
-  for (const pageId of selectedIds) {
+  for (const pageId of pageIds) {
     const elementIds = presets[pageId] || [];
     for (const elementId of elementIds) {
-      const manifest = await (await fetch(`modules/${elementId}/manifest.json`)).json();
-      let template = await (await fetch(`modules/${elementId}/${manifest.template}`)).text();
+      try {
+        const manifest = await (await fetch(`modules/${elementId}/manifest.json`)).json();
+        let template = await (await fetch(`modules/${elementId}/${manifest.template}`)).text();
 
-      const data = collectData(elementId, manifest);
-      manifest.inputs.forEach(input => {
-        const re = new RegExp(`\\{\\{\\s*${input.key}\\s*\\}\\}`, "g");
-        template = template.replace(re, data[input.key] || "");
-      });
+        // 收集字段数据
+        const data = {};
+        manifest.inputs.forEach(input => {
+          const el = document.querySelector(`input[name="${elementId}__${input.key}"]`);
+          data[input.key] = el ? el.value : "";
+        });
 
-      styles.add(`<link rel="stylesheet" href="modules/${elementId}/${manifest.style}">`);
-      template = stripTemplate(template);
-      parts.push(`<div class="module">${template}</div>`);
+        // 替换模板中的 {{key}}
+        manifest.inputs.forEach(input => {
+          const re = new RegExp(`\\{\\{\\s*${input.key}\\s*\\}\\}`, "g");
+          template = template.replace(re, data[input.key] || "");
+        });
+
+        // 加样式
+        allStyles.add(`<link rel="stylesheet" href="modules/${elementId}/${manifest.style}">`);
+
+        // 提取 <template> 内容
+        const m = template.match(/<template[^>]*>([\s\S]*?)<\/template>/i);
+        const clean = m ? m[1] : template;
+
+        allHtml.push(`<div class="module">${clean}</div>`);
+      } catch (e) {
+        console.warn(`⚠️ 跳过模块 ${elementId}：加载失败`, e);
+      }
     }
   }
 
-  return `
+  if (allHtml.length === 0) {
+    alert("⚠️ 所选页面未生成任何内容，请检查 presets 或模块是否存在");
+    return "";
+  }
+
+  // Assemble final HTML
+  const fullPage = `
     <!DOCTYPE html>
     <html lang="zh">
     <head>
       <meta charset="UTF-8">
-      <title>生成页面</title>
-      ${Array.from(styles).join("\n")}
+      <title>生成的聚会页面</title>
+      ${Array.from(allStyles).join("\n")}
       <style>.module { margin-bottom: 2rem; border-bottom: 1px dashed #ccc; padding-bottom: 1rem; }</style>
     </head>
     <body>
-      ${parts.join("\n")}
+      ${allHtml.join("\n")}
     </body>
     </html>
   `.trim();
+
+  return fullPage;
 }
 
 function stripTemplate(html) {
