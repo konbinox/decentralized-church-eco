@@ -1,15 +1,4 @@
 {
-<<<<<<< HEAD
-  "template": "scripture.html",
-  "style": "scripture.css",
-  "inputs": [
-    {
-      "key": "script",
-      "label": "脚本/台词"
-    }
-  ]
-}
-=======
   "name": "scripture",
   "version": "1.0.0",
   "inputs": [
@@ -20,4 +9,3 @@
   "template": "scripture.html",
   "script": "scripture.js"
 }
->>>>>>> 4a68468905ce0622c2dfd4d057aa1a140c1b4ef2
