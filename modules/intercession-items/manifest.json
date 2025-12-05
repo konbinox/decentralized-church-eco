@@ -1,10 +1,17 @@
 {
-  "template": "intercession-items.html",
+  "name": "模块 intercession-items",
+  "script": "intercession-items.js",
   "style": "intercession-items.css",
   "inputs": [
     {
+      "key": "title",
+      "label": "标题",
+      "type": "text"
+    },
+    {
       "key": "text",
-      "label": "文本字段"
+      "label": "正文",
+      "type": "textarea"
     }
   ]
 }

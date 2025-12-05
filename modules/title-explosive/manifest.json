@@ -1,10 +1,17 @@
 {
-  "name": "title-explosive",
-  "version": "1.0.0",
-  "inputs": [
-    { "key": "text", "type": "string", "label": "标题" }
-  ],
+  "name": "模块 title-explosive",
+  "script": "title-explosive.js",
   "style": "title-explosive.css",
-  "template": "title-explosive.html",
-  "script": "title-explosive.js"
+  "inputs": [
+    {
+      "key": "title",
+      "label": "标题",
+      "type": "text"
+    },
+    {
+      "key": "text",
+      "label": "正文",
+      "type": "textarea"
+    }
+  ]
 }

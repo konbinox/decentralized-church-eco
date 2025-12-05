@@ -1,10 +1,17 @@
 {
-  "template": "host-script.html",
+  "name": "模块 host-script",
+  "script": "host-script.js",
   "style": "host-script.css",
   "inputs": [
     {
-      "key": "script",
-      "label": "脚本/台词"
+      "key": "title",
+      "label": "标题",
+      "type": "text"
+    },
+    {
+      "key": "text",
+      "label": "正文",
+      "type": "textarea"
     }
   ]
 }

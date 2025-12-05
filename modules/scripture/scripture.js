@@ -1,11 +1,10 @@
 export default function render(data) {
-  const ref = data.reference || "";
+  const title = data.title || "";
   const text = data.text || "";
-
   return `
     <section class="scripture">
-      <h3 class="scripture-ref">${ref}</h3>
-      <p class="scripture-text">${text}</p>
+      <h2>${title}</h2>
+      <p>${text}</p>
     </section>
   `;
 }

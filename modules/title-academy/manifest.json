@@ -1,10 +1,17 @@
 {
-  "template": "title-academy.html",
+  "name": "模块 title-academy",
+  "script": "title-academy.js",
   "style": "title-academy.css",
   "inputs": [
     {
       "key": "title",
-      "label": "标题"
+      "label": "标题",
+      "type": "text"
+    },
+    {
+      "key": "text",
+      "label": "正文",
+      "type": "textarea"
     }
   ]
 }

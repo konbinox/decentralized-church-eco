@@ -1,14 +1,17 @@
 {
-  "template": "music-player.html",
+  "name": "模块 music-player",
+  "script": "music-player.js",
   "style": "music-player.css",
   "inputs": [
     {
       "key": "title",
-      "label": "音乐标题"
+      "label": "标题",
+      "type": "text"
     },
     {
-      "key": "url",
-      "label": "音乐链接"
+      "key": "text",
+      "label": "正文",
+      "type": "textarea"
     }
   ]
 }

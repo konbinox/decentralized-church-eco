@@ -1,10 +1,17 @@
 {
-  "template": "title-report.html",
+  "name": "模块 title-report",
+  "script": "title-report.js",
   "style": "title-report.css",
   "inputs": [
     {
       "key": "title",
-      "label": "标题"
+      "label": "标题",
+      "type": "text"
+    },
+    {
+      "key": "text",
+      "label": "正文",
+      "type": "textarea"
     }
   ]
 }

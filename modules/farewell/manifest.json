@@ -1,10 +1,17 @@
 {
-  "template": "farewell.html",
+  "name": "模块 farewell",
+  "script": "farewell.js",
   "style": "farewell.css",
   "inputs": [
     {
+      "key": "title",
+      "label": "标题",
+      "type": "text"
+    },
+    {
       "key": "text",
-      "label": "文本字段"
+      "label": "正文",
+      "type": "textarea"
     }
   ]
 }

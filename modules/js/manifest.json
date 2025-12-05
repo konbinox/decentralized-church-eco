@@ -1,0 +1,17 @@
+{
+  "name": "模块 js",
+  "script": "js.js",
+  "style": "js.css",
+  "inputs": [
+    {
+      "key": "title",
+      "label": "标题",
+      "type": "text"
+    },
+    {
+      "key": "text",
+      "label": "正文",
+      "type": "textarea"
+    }
+  ]
+}

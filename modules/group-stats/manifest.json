@@ -1,10 +1,17 @@
 {
-  "template": "group-stats.html",
+  "name": "模块 group-stats",
+  "script": "group-stats.js",
   "style": "group-stats.css",
   "inputs": [
     {
+      "key": "title",
+      "label": "标题",
+      "type": "text"
+    },
+    {
       "key": "text",
-      "label": "文本字段"
+      "label": "正文",
+      "type": "textarea"
     }
   ]
 }

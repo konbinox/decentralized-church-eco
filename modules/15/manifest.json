@@ -1,9 +1,17 @@
 {
-  "fields": [
+  "name": "模块 15",
+  "script": "15.js",
+  "style": "15.css",
+  "inputs": [
     {
-      "name": "15",
+      "key": "title",
+      "label": "标题",
       "type": "text"
+    },
+    {
+      "key": "text",
+      "label": "正文",
+      "type": "textarea"
     }
-  ],
-  "template": "15.html"
+  ]
 }

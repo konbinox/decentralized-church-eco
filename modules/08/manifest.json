@@ -1,9 +1,17 @@
 {
-  "fields": [
+  "name": "模块 08",
+  "script": "08.js",
+  "style": "08.css",
+  "inputs": [
     {
-      "name": "08",
+      "key": "title",
+      "label": "标题",
       "type": "text"
+    },
+    {
+      "key": "text",
+      "label": "正文",
+      "type": "textarea"
     }
-  ],
-  "template": "08.html"
+  ]
 }

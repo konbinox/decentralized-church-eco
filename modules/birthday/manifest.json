@@ -1,10 +1,17 @@
 {
-  "template": "birthday.html",
+  "name": "模块 birthday",
+  "script": "birthday.js",
   "style": "birthday.css",
   "inputs": [
     {
+      "key": "title",
+      "label": "标题",
+      "type": "text"
+    },
+    {
       "key": "text",
-      "label": "文本字段"
+      "label": "正文",
+      "type": "textarea"
     }
   ]
 }

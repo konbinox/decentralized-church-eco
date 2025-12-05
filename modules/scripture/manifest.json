@@ -1,16 +1,16 @@
 {
-  "name": "经文模块",
+  "name": "模块 scripture",
   "script": "scripture.js",
   "style": "scripture.css",
   "inputs": [
     {
-      "key": "reference",
-      "label": "经文引用",
+      "key": "title",
+      "label": "标题",
       "type": "text"
     },
     {
       "key": "text",
-      "label": "经文内容",
+      "label": "正文",
       "type": "textarea"
     }
   ]

@@ -1,10 +1,17 @@
 {
-  "template": "qr-code.html",
+  "name": "模块 qr-code",
+  "script": "qr-code.js",
   "style": "qr-code.css",
   "inputs": [
     {
+      "key": "title",
+      "label": "标题",
+      "type": "text"
+    },
+    {
       "key": "text",
-      "label": "文本字段"
+      "label": "正文",
+      "type": "textarea"
     }
   ]
 }
