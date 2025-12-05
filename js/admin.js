@@ -87,11 +87,11 @@ async function buildFullPage(pageIds, presets) {
         assert(typeof manifest.style === "string", `manifest(${elementId}) 缺少 style`);
         assert(Array.isArray(manifest.inputs), `manifest(${elementId}) inputs 必须是数组`);
 
-        // Collect data via dynamic form (instead of prompt)
+        // Collect data via dynamic form
         const data = {};
         for (const input of manifest.inputs) {
-          const val = prompt(`请输入 ${elementId} 的 ${input.label || input.key}`) || "";
-          data[input.key] = val;
+          const el = document.querySelector(`[name="${elementId}-${input.key}"]`);
+          data[input.key] = el ? el.value : "";
         }
 
         // Load module script dynamically
@@ -152,6 +152,35 @@ function downloadPage(fullPageHtml, filename) {
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
+}
+
+// --- Render dynamic form ---
+async function renderForm(pageIds, presets) {
+  const formContainer = document.getElementById("pageFields");
+  formContainer.innerHTML = "";
+
+  for (const pageId of pageIds) {
+    const elementIds = presets[pageId] || [];
+    for (const elementId of elementIds) {
+      const manifestUrl = `modules/${elementId}/manifest.json`;
+      const manifestRes = await fetch(manifestUrl);
+      if (!manifestRes.ok) continue;
+      const manifest = await manifestRes.json();
+
+      const group = document.createElement("fieldset");
+      group.innerHTML = `<legend>${manifest.name}</legend>`;
+      for (const input of manifest.inputs) {
+        const label = document.createElement("label");
+        label.textContent = input.label || input.key;
+        const field = document.createElement("input");
+        field.name = `${elementId}-${input.key}`;
+        field.type = input.type || "text";
+        label.appendChild(field);
+        group.appendChild(label);
+      }
+      formContainer.appendChild(group);
+    }
+  }
 }
 
 // --- Init ---
