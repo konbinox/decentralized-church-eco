@@ -84,40 +84,22 @@ async function buildFullPage(pageIds, presets) {
 
         // Validate manifest
         assert(manifest && typeof manifest === "object", `manifest(${elementId}) 格式错误`);
-        assert(typeof manifest.template === "string", `manifest(${elementId}) 缺少 template`);
         assert(typeof manifest.style === "string", `manifest(${elementId}) 缺少 style`);
         assert(Array.isArray(manifest.inputs), `manifest(${elementId}) inputs 必须是数组`);
 
-        // Load template
-        const templateUrl = `modules/${elementId}/${manifest.template}`;
-        const templateRes = await fetch(templateUrl);
-        if (!templateRes.ok) throw new Error(`无法加载模板 ${templateUrl}`);
-        let templateHtml = await templateRes.text();
-
-        // Collect data via prompt (kept for parity; can be replaced with dynamic forms)
+        // Collect data via dynamic form (instead of prompt)
         const data = {};
         for (const input of manifest.inputs) {
-          if (!input || typeof input.key !== "string") {
-            throw new Error(`manifest(${elementId}) inputs 项缺少 key`);
-          }
           const val = prompt(`请输入 ${elementId} 的 ${input.label || input.key}`) || "";
           data[input.key] = val;
         }
 
-        // Replace placeholders consistently ({{key}}) – replaceAll with regex for multiple occurrences
-        let rendered = templateHtml;
-        for (const input of manifest.inputs) {
-          const key = input.key;
-          const value = data[key] || "";
-          const re = new RegExp(`\\{\\{\\s*${key}\\s*\\}\\}`, "g");
-          rendered = rendered.replace(re, value);
-        }
+        // Load module script dynamically
+        const moduleScript = await import(`./modules/${elementId}/${manifest.script}`);
+        const rendered = moduleScript.default(data);
 
         // Track styles
         allStyles.add(`<link rel="stylesheet" href="modules/${elementId}/${manifest.style}">`);
-
-        // If the template contains <template id="...">, we can strip it or keep innerHTML
-        rendered = stripTemplateWrapper(rendered);
 
         allHtml.push(rendered);
       }
@@ -150,16 +132,10 @@ async function buildFullPage(pageIds, presets) {
   return fullPage;
 }
 
-// --- Helpers ---
-function stripTemplateWrapper(html) {
-  // If the module uses <template id="...">...</template>, extract inner content
-  const m = html.match(/<template[^>]*>([\s\S]*?)<\/template>/i);
-  return m ? m[1] : html;
-}
-
 // --- Preview ---
 function previewPage(fullPageHtml) {
-  const doc = document.getElementById("preview").contentDocument;
+  const iframe = document.getElementById("preview");
+  const doc = iframe.contentDocument || iframe.contentWindow.document;
   doc.open();
   doc.write(fullPageHtml);
   doc.close();
