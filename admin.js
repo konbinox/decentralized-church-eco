@@ -51,13 +51,14 @@ async function loadPagesAndPresets() {
   });
 
   // Bind actions
+  /*
   document.getElementById("previewBtn").addEventListener("click", async () => {
     clearLog();
     const selectedIds = getSelectedPageIds(selector);
     const fullPage = await buildFullPage(selectedIds, presets);
     if (fullPage) previewPage(fullPage);
   });
-
+  */
   document.getElementById("exportBtn").addEventListener("click", async () => {
     clearLog();
     const selectedIds = getSelectedPageIds(selector);
